@@ -1,0 +1,11 @@
+.errors {
+    color: darkred;
+}
+
+table {
+    padding: 10px;
+}
+
+thead td {
+    font-weight: bold;
+}

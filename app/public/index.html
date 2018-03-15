@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Guestbook</title>
+   <link href="css/guestbook.css" type="text/css" rel="stylesheet">
+   <script src="js/jquery-1.11.3.min.js" type="text/javascript"></script>
+   <script src="js/guestbook.js" type="text/javascript"></script>
+ </head>
+ <body>
+  <h3>Guestbook</h3>
+  <table id="guestbook">
+   <thead>
+   <tr>
+    <td>Name</td>
+    <td>Date</td>
+    <td>Comment</td>
+   </tr>
+   </thead>
+   <tbody>
+   </tbody>
+  </table>
+  <form id="guestbookAdd">
+   <div class="errors"></div>
+   <input type="text" id="name" name="name" placeholder="Your name" /> <br/>
+   <input type="email" id="email" name="email" placeholder="Your email" /> <br/>
+   <textarea name="comment" id="comment" placeholder="Comment">
+   </textarea>
+   <input type="submit" value="Send" />
+  </form>
+ </body>
+</html>
