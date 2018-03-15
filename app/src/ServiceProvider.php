@@ -15,11 +15,11 @@ class ServiceProvider implements ServiceProviderInterface
             return new \PDO(
                 sprintf(
                     'pgsql:host=%s;dbname=%s;',
-                    getenv('POSTGRES_HOST'),
-                    getenv('POSTGRES_DATABASE')
+                    getenv('POSTGRES_HOST') ? getenv('POSTGRES_HOST') : 'localhost',
+                    getenv('POSTGRES_DATABASE') ? getenv('POSTGRES_DATABASE') : 'guestbook'
                 ),
-                getenv('POSTGRES_USER'),
-                getenv('POSTGRES_PASSWORD'),
+                getenv('POSTGRES_USER') ? getenv('POSTGRES_USER') : 'guestbook',
+                getenv('POSTGRES_PASSWORD') ? getenv('POSTGRES_PASSWORD') : '9gD@E0WO',
                 [
                     \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
                 ]
