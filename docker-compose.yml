@@ -1,0 +1,35 @@
+version: '3'
+
+volumes:
+    app:
+        driver: local
+
+services:
+    php_postgres:
+        image: fguery/php_postgres:latest
+        container_name: bark_php
+        working_dir: /var/www/app
+        environment:
+            POSTGRES_USER: guestbook
+            POSTGRES_PASSWORD: pass
+            POSTGRES_DATABASE: guestbook
+            POSTGRES_HOST: bark_postgres
+            APACHE_DOCUMENT_ROOT: /var/www/app/public
+        ports:
+            - 8081:80
+        volumes:
+            - ./app:/var/www/app
+        depends_on:
+            - postgres
+    postgres:
+        image: postgres:9.5
+        container_name: bark_postgres
+        restart: always
+        volumes:
+            - ./postgres:/docker-entrypoint-initdb.d
+        environment:
+            POSTGRES_MULTIPLE_DATABASES: guestbook,guestbook_tests
+            POSTGRES_USER: guestbook
+            POSTGRES_PASSWORD: pass
+        ports:
+            - "5432:5432"
